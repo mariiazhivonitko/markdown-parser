@@ -34,5 +34,6 @@ cleaned_cells = [list(map(str.strip, line)) for line in cleaned_lines]
 
 df = pd.DataFrame(cleaned_cells[1:], columns = cleaned_cells[0])
 
+
 print(df)
 
