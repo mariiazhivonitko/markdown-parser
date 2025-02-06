@@ -1,4 +1,5 @@
 import re
+import pandas as pd
 
 # The text containing the table
 text = """
@@ -20,17 +21,15 @@ Here are the proposed headers, possible units, and data types for the columns:
 Please note that the above headers are just proposed and may need to be adjusted based on the specific requirements of your data analysis.
 """
 
-#def extract_markdown_table(text):
-#   """Extracts the data from a markdown table.
-
-#   Args:
-#     markdown_table: A string containing the markdown table.
-
-#   Returns:
-#     Dataframe.
-#   """
-
-match = re.search(r"(\|.*?\|\n(\|[-: ]+\|\n)?(\|.*?\|\n?)+)", text, re.DOTALL)
+match = re.search(r"(\|[^\n]+\|\n(?:\|[^\n]+\|\n?)+)", text)
 table_text = match.group(1)
-print(table_text)
+
+table_lines = table_text.strip().split("\n")
+
+cleaned_lines = [line.strip("|") for line in table_lines]
+
+
+
+
+print(cleaned_lines)
 
